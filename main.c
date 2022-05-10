@@ -12,7 +12,7 @@
 int main(void) {
   printf("hello world!\n");
   int width, height, channels;
-  unsigned char *img = stbi_load("sky.jpg", &width, &height, &channels, 0);
+  unsigned char *img = stbi_load("hamster.jpg", &width, &height, &channels, 0);
   if(img == NULL) {
       printf("Error in loading the image\n");
       exit(1);
