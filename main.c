@@ -18,11 +18,12 @@ int main(void) {
       exit(1);
   }
   
+  size_t img_size = width * height * channels;
   size_t gray_img_size = width * height;
   unsigned char *gray_img = malloc(gray_img_size);
   
   int k = 0;
-  for (int i = 0; i < gray_img_size; i += 3) {
+  for (int i = 0; i < img_size; i += 3) {
     //gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
     gray_img[k++] = 255;
   }
