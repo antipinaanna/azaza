@@ -5,6 +5,9 @@
 #include<strings.h>
 #include<stdio.h>
 #include<stdlib.h>
+
 int main(){
-return 0;
+  printf("hello world!\n");
+  return 0;
+  
 }
