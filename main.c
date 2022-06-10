@@ -12,7 +12,7 @@ float svertka_Gauss (size_t w, size_t h, unsigned char **graph, unsigned char **
     int i, j;
     for (i = 1; i < h + 1; i++)
         for (j = 1; j < w + 1; j++)
-            graph[i][j] = (graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538;
+            graph[i - 1][j - 1] = (graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538;
 }
     
 
