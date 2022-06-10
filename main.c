@@ -80,11 +80,11 @@ int main(void) {
     
     Gauss_blur(width, height, graph, graph1);
    printf ("7");
-    for (i = 0; i < height; i++)
+/*    for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
             gray_img[i * width + j] = graph[i][j];
           }
-  
+ */ 
   stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
