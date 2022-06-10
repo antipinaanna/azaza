@@ -58,11 +58,11 @@ int main(void) {
   printf("hello world!\n");
   int k = 0, i, j;
   for (i = 0; i < img_size; i += 3) {
-      printf("hello world!\n");
+    printf ("%d %d", i, k);
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
     //gray_img[k++] = 255;
   }
-     printf ("1");
+    printf ("1");
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
