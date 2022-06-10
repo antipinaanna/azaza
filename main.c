@@ -12,7 +12,7 @@
 
 int main(void) {
   printf("hello world!\n");
-  int width, height, channels;
+  size_t width, height, channels;
   unsigned char *img = stbi_load("hamster.jpg", &width, &height, &channels, 0);
   if(img == NULL) {
       printf("Error in loading the image\n");
@@ -24,7 +24,7 @@ int main(void) {
   unsigned char *gray_img = (unsigned char *)malloc(gray_img_size*sizeof(unsigned char));
   
   int k = 0;
-  for (int i = 0; i < img_size; i += 3) {
+  for (int i = 0; i < img_size - 2; i += 3) {
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
     //gray_img[k++] = 255;
   }
