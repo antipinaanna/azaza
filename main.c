@@ -9,7 +9,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-/*void svertka_Gauss (size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
+void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
     printf ("6");
     for (i = 1; i < h + 1; i++){
@@ -22,8 +22,9 @@
 }
     
 
-void Gauss_blur(size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
+void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
+    printf ("467");
     for (i = 1; i < h + 1; i++){
         for (j = 1; j < w + 1; j++){
             graph1[i][j] = graph[i - 1][j - 1];
@@ -42,7 +43,7 @@ void Gauss_blur(size_t w, size_t h, unsigned char **graph, unsigned char **graph
     svertka_Gauss (w, h, graph, graph1);
     return;  
 }
-*/
+
 
 int main(void) {
   printf("hello world!\n");
@@ -76,14 +77,14 @@ int main(void) {
         graph[i][j] = gray_img[i * width + j];
       }
     printf ("3");
-    /*
+    
     Gauss_blur(width, height, graph, graph1);
    printf ("7");
     for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
             gray_img[i * width + j] = graph[i][j];
           }
-  */
+  
   stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
