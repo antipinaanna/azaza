@@ -56,7 +56,7 @@ int main(void) {
   size_t gray_img_size = width * height;
   unsigned char *gray_img = malloc(gray_img_size);
   printf("hello world!\n");
-  size_t i, j;
+  size_t k = 0, i, j;
   for (i = 0; i < img_size; i += 3) {
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
     //gray_img[k++] = 255;
