@@ -78,7 +78,7 @@ int main(void) {
       }
     printf ("3");
     
-    Gauss_blur(width, height, graph, graph1);
+ //   Gauss_blur(width, height, graph, graph1);
    printf ("7");
 /*    for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
