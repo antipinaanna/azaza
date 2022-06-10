@@ -45,13 +45,12 @@ void Gauss_blur(size_t w, size_t h, unsigned char **graph, unsigned char **graph
 
 int main(void) {
   printf("hello world!\n");
-  int width, height, channels;
+  size_t width, height, channels;
   unsigned char *img = stbi_load("hamster.jpg", &width, &height, &channels, 0);
   if(img == NULL) {
       printf("Error in loading the image\n");
       exit(1);
   }
-  printf("hello world!\n");
   size_t img_size = width * height * channels;
   size_t gray_img_size = width * height;
   unsigned char *gray_img = (unsigned char *)malloc(gray_img_size*sizeof(unsigned char));
@@ -61,26 +60,11 @@ int main(void) {
   printf ("%ld %ld\n", gray_img_size, img_size);
   for (i = 0; i < img_size - 3; i += 3) {
 //    printf ("%d %d\n", i, k);
-    //gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
-    gray_img[k++] = 255;
+    gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
+//    gray_img[k++] = 255;
   }
     printf ("1");
-    unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
-    for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
-    unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
-    for (i = 0; i < height; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
-    printf ("2");
-    for (i = 0; i < height; i++)
-      for (j = 0; j < width; j++){
-        graph[i][j] = gray_img[i * width + j];
-      }
-    printf ("3");
-    Gauss_blur(width, height, graph, graph1);
-   printf ("7");
-    for (i = 0; i < height; i++)
-          for (j = 0; j < width; j++){
-            gray_img[i * width + j] = graph[i][j];
-          }
+
   
   stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
   
