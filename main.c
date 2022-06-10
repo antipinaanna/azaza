@@ -21,7 +21,7 @@ int main(void) {
   
   size_t img_size = width * height * channels;
   size_t gray_img_size = width * height;
-  unsigned char *gray_img = malloc(gray_img_size);
+  unsigned char *gray_img = (unsigned char *)malloc(gray_img_size*sizeof(unsigned char));
   
   int k = 0;
   for (int i = 0; i < img_size; i += 3) {
