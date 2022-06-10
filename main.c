@@ -8,11 +8,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-float svertka_Gauss (size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
+void svertka_Gauss (size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
     int i, j;
-    for (i = 1; i < h + 1; i++)
-        for (j = 1; j < w + 1; j++)
+    for (i = 1; i < h + 1; i++){
+        for (j = 1; j < w + 1; j++){
             graph[i - 1][j - 1] = (graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538;
+        }
+    }
+   return;
 }
     
 
@@ -69,7 +72,7 @@ int main(void) {
   
     for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
-            gray_img[i * width + j] = graph1[i][j];
+            gray_img[i * width + j] = graph[i][j];
           }
   
   stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
