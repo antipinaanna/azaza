@@ -8,39 +8,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void svertka_Gauss (size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
-    int i, j;
-    printf ("6");
-    for (i = 1; i < h + 1; i++){
-        printf ("8");
-        for (j = 1; j < w + 1; j++){
-            graph[i - 1][j - 1] = (unsigned char)((graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538);
-        }
-    }
-   return;
-}
-    
-
-void Gauss_blur(size_t w, size_t h, unsigned char **graph, unsigned char **graph1){
-    int i, j;
-    for (i = 1; i < h + 1; i++){
-        for (j = 1; j < w + 1; j++){
-            graph1[i][j] = graph[i - 1][j - 1];
-        }    
-    }
-    printf ("4");
-    for (i = 1; i < h + 1; i++){
-        graph1[i][0] = graph[i - 1][0];
-        graph1[i][w + 1] = graph[i - 1][w - 1];
-    }
-    for (j = 0; j < w + 2; j++){
-        graph1[0][j] = graph1[1][j];
-        graph1[h + 1][j] = graph1[h][j];
-    }
-    printf ("5");
-    svertka_Gauss (w, h, graph, graph1);
-    return;  
-}
 
 
 int main(void) {
