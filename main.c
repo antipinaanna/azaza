@@ -56,8 +56,7 @@ int main(void) {
   size_t gray_img_size = width * height;
   unsigned char *gray_img = malloc(gray_img_size);
   printf("hello world!\n");
-  int k = 0, i, j;
-  printf ("%ld\n", channels);  
+  size_t k = 0, i, j;  
   printf ("%ld %ld\n", width, height); 
   printf ("%ld %ld\n", gray_img_size, img_size);
   for (i = 0; i < img_size - 3; i += 3) {
