@@ -54,7 +54,7 @@ int main(void) {
   printf("hello world!\n");
   size_t img_size = width * height * channels;
   size_t gray_img_size = width * height;
-  unsigned char *gray_img = malloc(gray_img_size*sizeof(unsigned char));
+  unsigned char *gray_img = (unsigned char *)malloc(gray_img_size*sizeof(unsigned char));
   printf("hello world!\n");
   size_t k = 0, i, j;  
   printf ("%ld %ld\n", width, height); 
