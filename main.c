@@ -65,8 +65,8 @@ int main(void) {
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
   //  gray_img[k++] = 255;
   }
- /*   printf ("1");
-    unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
+    printf ("1");
+  /*  unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
