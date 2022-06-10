@@ -85,7 +85,7 @@ int main(void) {
             gray_img[i * width + j] = graph[i][j];
           }
  */ 
-  stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
+  stbi_write_jpg("hamster_gray1.jpg", width, height, 1, gray_img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
  
