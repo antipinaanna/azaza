@@ -56,20 +56,20 @@ int main(void) {
   }
      
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
-    for (i = 0; i < h; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
+    for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
-    for (i = 0; i < h; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
+    for (i = 0; i < height; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
   
     for (i = 0; i < height; i++)
       for (j = 0; j < width; j++){
-        graph[i][j] = gray_img[i * w + j];
+        graph[i][j] = gray_img[i * width + j];
       }
 
     Gauss_blur(width, height, graph, graph1);
   
     for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
-            gray_img[i * w + j] = graph1[i][j];
+            gray_img[i * width + j] = graph1[i][j];
           }
   
   stbi_write_jpg("hamster_gray.jpg", width, height, 1, gray_img, 100);
