@@ -57,10 +57,11 @@ int main(void) {
   unsigned char *gray_img = malloc(gray_img_size);
   printf("hello world!\n");
   int k = 0, i, j;
+  printf ("%ld\n", channels);  
   printf ("%ld %ld\n", width, height); 
   printf ("%ld %ld\n", gray_img_size, img_size);
-  for (i = 0; i < img_size; i += 3) {
-    if (i%1000 == 0) printf ("%d %d\n", i, k);
+  for (i = 0; i < img_size - 3; i += 3) {
+    if (img_size - i < 1000) printf ("%d %d\n", i, k);
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
     //gray_img[k++] = 255;
   }
