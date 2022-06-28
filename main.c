@@ -109,8 +109,10 @@ int main(void) {
    Gauss_blur(width, height, graph, graph1);
     printf ("7\n");
     int n = height * width;
-    int res[n][n];    
+    unsigned char res[n][n]; 
+    printf ("67\n");
     int cnt = 0;
+    printf ("7\n");
     int skip[n];
     printf ("888\n");
     for (i = 0; i < n; ++i) skip[i] = 0;
