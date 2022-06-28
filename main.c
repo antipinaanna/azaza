@@ -120,7 +120,7 @@ int main(void) {
         }
         cnt++;
         dfs(colour, i, n, graph);
-        for (g = 0; g < n; g++)
+        for (int g = 0; g < n; g++)
         {
             if ((graph[i][g] != 0) || (graph[g][i] != 0)) {
                 colour[g] = 2;
