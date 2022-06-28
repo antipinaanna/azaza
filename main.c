@@ -107,7 +107,7 @@ int main(void) {
    high_contrast (graph, width, height, black, white);
     
    Gauss_blur(width, height, graph, graph1);
-    
+    printf ("7\n");
     int n = height * width;
     int res[n][n];    
     int cnt = 0;
