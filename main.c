@@ -9,6 +9,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
+void high_contrast (unsigned char** graph, int w, int h, int black, int white) {
+    for (int i = 2; i < h - 1; i++) {
+        for (int j = 2; j < w - 1; j++) {
+            if (graph[i][j] <= black-1) graph[i][j] = 0;
+            if (graph[i][j] >= white + 1) graph[i][j] = 255;
+        }
+    }
+}
+
 void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
     printf ("6\n");
@@ -66,6 +76,8 @@ int main(void) {
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
   //  gray_img[k++] = 255;
   }
+    int black = 100;
+    int white = 150;
     printf ("1\n");
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
@@ -77,7 +89,7 @@ int main(void) {
         graph[i][j] = gray_img[i * width + j];
       }
     printf ("3\n");
-    
+   high_contrast (unsigned char** graph, int w, int h, int black, int white);
    Gauss_blur(width, height, graph, graph1);
    printf ("7\n");
     for (i = 0; i < height; i++)
