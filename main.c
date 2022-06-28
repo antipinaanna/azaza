@@ -11,7 +11,7 @@
 
 void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
-    printf ("6");
+    printf ("6\n");
     for (i = 1; i < h + 1; i++){
         printf ("8");
         for (j = 1; j < w + 1; j++){
@@ -24,13 +24,13 @@ void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1)
 
 void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
-    printf ("467");
+    printf ("467\n");
     for (i = 1; i < h + 1; i++){
         for (j = 1; j < w + 1; j++){
             graph1[i][j] = graph[i - 1][j - 1];
         }    
     }
-    printf ("4");
+    printf ("4\n");
     for (i = 1; i < h + 1; i++){
         graph1[i][0] = graph[i - 1][0];
         graph1[i][w + 1] = graph[i - 1][w - 1];
@@ -39,7 +39,7 @@ void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
         graph1[0][j] = graph1[1][j];
         graph1[h + 1][j] = graph1[h][j];
     }
-    printf ("5");
+    printf ("5\n");
     svertka_Gauss (w, h, graph, graph1);
     return;  
 }
@@ -66,25 +66,25 @@ int main(void) {
     gray_img[k++] = (img[i] * 11 + img[i + 1] * 16 + img[i + 2] * 5) / 32;
   //  gray_img[k++] = 255;
   }
-    printf ("1");
+    printf ("1\n");
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
-    printf ("2");
+    printf ("2\n");
     for (i = 0; i < height; i++)
       for (j = 0; j < width; j++){
         graph[i][j] = gray_img[i * width + j];
       }
-    printf ("3");
+    printf ("3\n");
     
- //   Gauss_blur(width, height, graph, graph1);
-   printf ("7");
-/*    for (i = 0; i < height; i++)
+   Gauss_blur(width, height, graph, graph1);
+   printf ("7\n");
+    for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
             gray_img[i * width + j] = graph[i][j];
           }
- */ 
+    
   stbi_write_jpg("hamster_gray1.jpg", width, height, 1, gray_img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
