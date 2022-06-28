@@ -112,12 +112,14 @@ int main(void) {
     int res[n][n];    
     int cnt = 0;
     int skip[n];
+    printf ("888\n");
     for (i = 0; i < n; ++i) skip[i] = 0;
         for (i = 0; i < n; i++)
     {
         if (skip[i] == 1) {
             continue;
         }
+          printf ("767\n");
         cnt++;
         dfs(colour, i, n, graph);
         for (int g = 0; g < n; g++)
