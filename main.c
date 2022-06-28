@@ -89,7 +89,7 @@ int main(void) {
         graph[i][j] = gray_img[i * width + j];
       }
     printf ("3\n");
-   high_contrast (unsigned char** graph, int w, int h, int black, int white);
+   high_contrast (graph, w, h, black, white);
    Gauss_blur(width, height, graph, graph1);
    printf ("7\n");
     for (i = 0; i < height; i++)
