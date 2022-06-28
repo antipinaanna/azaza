@@ -58,7 +58,7 @@ void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
 int main(void) {
   printf("hello world!\n");
   int width, height, channels;
-  unsigned char *img = stbi_load("mypain.jpg", &width, &height, &channels, 0);
+  unsigned char *img = stbi_load("hamster_gray.jpg", &width, &height, &channels, 0);
   if(img == NULL) {
       printf("Error in loading the image\n");
       exit(1);
@@ -97,7 +97,7 @@ int main(void) {
             gray_img[i * width + j] = graph[i][j];
           }
     
-  stbi_write_jpg("mypain1.jpg", width, height, 1, gray_img, 100);
+  stbi_write_jpg("hamster_gray1.jpg", width, height, 1, gray_img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
  
