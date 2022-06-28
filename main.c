@@ -70,7 +70,7 @@ int main(void) {
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
-    for (i = 0; i < height; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
+    for (i = 0; i < height + 2; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
     printf ("2\n");
     for (i = 0; i < height; i++)
       for (j = 0; j < width; j++){
