@@ -23,7 +23,6 @@ void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1)
     int i, j;
     printf ("6\n");
     for (i = 1; i < h + 1; i++){
-        printf ("8");
         for (j = 1; j < w + 1; j++){
             graph[i - 1][j - 1] = (unsigned char)((graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538);
         }
@@ -56,6 +55,7 @@ void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
 
 void dfs(int *colour, int i, int n, unsigned char** graph)
 {
+    printf ("777\n");
     int j, k = 0, h = 0, g;
     colour[i] = 1;
     for (j = 0; j < n; j++)
