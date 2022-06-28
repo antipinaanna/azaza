@@ -54,6 +54,19 @@ void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
     return;  
 }
 
+void dfs(int *colour, int i, int n, unsigned char** graph)
+{
+    int j, k = 0, h = 0, g;
+    colour[i] = 1;
+    for (j = 0; j < n; j++)
+    {
+        if ((graph[i][j] < 50) && (colour[j] == 0))
+            dfs(colour, j, n, graph);
+    }
+       colour[i] = 2;
+
+        return;
+    }
 
 int main(void) {
   printf("hello world!\n");
@@ -78,19 +91,70 @@ int main(void) {
   }
     int black = 100;
     int white = 150;
-    printf ("1\n");
+    int *colour = (int*)calloc(height * width, sizeof(int));
+    
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
     for (i = 0; i < height + 2; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
-    printf ("2\n");
+    
+
     for (i = 0; i < height; i++)
       for (j = 0; j < width; j++){
         graph[i][j] = gray_img[i * width + j];
       }
-    printf ("3\n");
+
    high_contrast (graph, width, height, black, white);
+    
    Gauss_blur(width, height, graph, graph1);
+    
+    int n = height * width;
+    int res[n][n];    
+    int cnt = 0;
+    int skip[n];
+    for (i = 0; i < n; ++i) skip[i] = 0;
+        for (i = 0; i < n; i++)
+    {
+        if (skip[i] == 1) {
+            continue;
+        }
+        cnt++;
+        dfs(colour, i, n, graph);
+        for (g = 0; g < n; g++)
+        {
+            if ((graph[i][g] != 0) || (graph[g][i] != 0)) {
+                colour[g] = 2;
+            }
+                
+            if ((g > i) && (colour[g] == 2)){
+                skip[g] = 1;
+            } 
+            res[i][g] = colour[g];
+            res[i][i] = 2;
+            colour[g] = 0;
+         }
+        
+    }
+    
+ printf("%d\n", cnt);
+    for (i = 0; i < n; ++i) {
+        if (skip[i] == 1) continue;
+        
+        int sum = 0;
+        for (j = i; j < n; ++j) {
+            if (j < n && res[i][j] == 2) sum++;
+        }
+        
+        printf("%d\n", sum);
+        
+        for (j = i; j < n; ++j) {
+            if (res[i][j] == 2) printf("%d ", j + 1);
+        }
+        
+        printf("\n");
+    } 
+    
+    
    printf ("7\n");
     for (i = 0; i < height; i++)
           for (j = 0; j < width; j++){
