@@ -68,9 +68,29 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
         return;
     }
 
+void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
+    v[i][j] = m;
+    if((i >= 1) && (i <= h-1) && (j - 2 >= 1) && (j - 2 <= w - 1)){
+        if((abs(data[i][j]-data[i][j - 2]) <= 60) && (v[i][j - 2] == 0)){
+            dfs(i, j - 2, w, h, data, v, m);
+        }
+    }
+    if((i - 2 >= 1) && (i - 2 <= h-1) && (j +1 >= 1) && (j + 1 <= w - 1)){
+        if((abs(data[i][j]-data[i - 2][j + 1]) <= 60) && (v[i - 2][j + 1] == 0)){
+            dfs(i - 2, j + 1, w, h, data, v, m);
+        }
+    }
+    if((i + 2 >= 1) && (i + 2 <= h-1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
+        if((abs(data[i][j]-data[i + 2][j + 1]) <= 60) && (v[i + 2][j + 1] == 0)){
+            dfs(i + 2, j + 1, w, h, data, v, m);
+        }
+    }
+}
+
+
 int main(void) {
   printf("hello world!\n");
-  int width, height, channels;
+  int width, height, channels, m = 0;
   unsigned char *img = stbi_load("hamster_gray.jpg", &width, &height, &channels, 0);
   if(img == NULL) {
       printf("Error in loading the image\n");
@@ -91,8 +111,9 @@ int main(void) {
   }
     int black = 100;
     int white = 150;
-    int *colour = (int*)calloc(height * width, sizeof(int));
     
+    int **colour = (int*)calloc(height, sizeof(int));
+    for (i = 0; i < height; i++) colour[i] = (int*)malloc(width * sizeof (int));
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
@@ -107,7 +128,34 @@ int main(void) {
    high_contrast (graph, width, height, black, white);
     
    Gauss_blur(width, height, graph, graph1);
-    printf ("7\n");
+    
+    
+   for (i = 1;i < height; i++){
+       for (j = 1;j < width; j++){
+            if(colour[i][j] == 0){
+                m += 1;
+                dfs(i, j, width, height, graph, colour, m);
+            }
+        }
+    } 
+    
+    int c;
+    k = 0;
+    for (i = 0; i < height * width * 3; i += 3){
+        c = colour[k] % 74 + vert[k] % 13;
+        img[i] = 3 * c - 35;
+        img[i+1] = 4 * c + 60;
+        img[i+2] = 5 * c + 13;
+   //     img[i+3] = 255;
+        k++;
+    }
+/*    char* hamster_colour = "hamster_colour.";
+    stbi_write_png(outputPath, iw, ih, n, odata, 0);
+    free(data);
+    stbi_image_free(input_image); 
+*/    
+    
+/*    printf ("7\n");
     int n = height * width;
     unsigned char res[n][n]; 
     printf ("67\n");
@@ -164,8 +212,8 @@ int main(void) {
           for (j = 0; j < width; j++){
             gray_img[i * width + j] = graph[i][j];
           }
-    
-  stbi_write_jpg("hamster_gray1.jpg", width, height, 1, gray_img, 100);
+ */   
+  stbi_write_jpg("hamster_gray2.jpg", width, height, 1, img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
  
