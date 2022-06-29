@@ -307,3 +307,62 @@ git commit
 git commit -v
 git status
 git push
+ls main
+xls
+ls nano
+history
+nano main.c
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git commit
+git add.
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+./main
+git add
+git add main.c
+git commit
+git status
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
