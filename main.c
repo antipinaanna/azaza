@@ -72,17 +72,17 @@ void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
     v[i][j] = m;
     if((i >= 1) && (i <= h-1) && (j - 2 >= 1) && (j - 2 <= w - 1)){
         if((abs(data[i][j]-data[i][j - 2]) <= 60) && (v[i][j - 2] == 0)){
-            dfs(i, j - 2, w, h, data, v, m);
+            dfs2(i, j - 2, w, h, data, v, m);
         }
     }
     if((i - 2 >= 1) && (i - 2 <= h-1) && (j +1 >= 1) && (j + 1 <= w - 1)){
         if((abs(data[i][j]-data[i - 2][j + 1]) <= 60) && (v[i - 2][j + 1] == 0)){
-            dfs(i - 2, j + 1, w, h, data, v, m);
+            dfs2(i - 2, j + 1, w, h, data, v, m);
         }
     }
     if((i + 2 >= 1) && (i + 2 <= h-1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
         if((abs(data[i][j]-data[i + 2][j + 1]) <= 60) && (v[i + 2][j + 1] == 0)){
-            dfs(i + 2, j + 1, w, h, data, v, m);
+            dfs2(i + 2, j + 1, w, h, data, v, m);
         }
     }
 }
