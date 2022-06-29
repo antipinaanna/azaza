@@ -13,7 +13,7 @@
 void high_contrast (unsigned char** graph, int w, int h, int black, int white) {
     for (int i = 2; i < h - 1; i++) {
         for (int j = 2; j < w - 1; j++) {
-            if (graph[i][j] <= black-1) graph[i][j] = 0;
+            if (graph[i][j] <= black - 1) graph[i][j] = 0;
             if (graph[i][j] >= white + 1) graph[i][j] = 255;
         }
     }
@@ -71,17 +71,17 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
     v[i][j] = m;
     if((i >= 1) && (i <= h-1) && (j - 2 >= 1) && (j - 2 <= w - 1)){
-        if((abs(data[i][j]-data[i][j - 2]) <= 60) && (v[i][j - 2] == 0)){
+        if((abs(data[i][j]-data[i][j - 2]) <= 10) && (v[i][j - 2] == 0)){
             dfs2(i, j - 2, w, h, data, v, m);
         }
     }
-    if((i - 2 >= 1) && (i - 2 <= h-1) && (j +1 >= 1) && (j + 1 <= w - 1)){
-        if((abs(data[i][j]-data[i - 2][j + 1]) <= 60) && (v[i - 2][j + 1] == 0)){
+    if((i - 2 >= 1) && (i - 2 <= h - 1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
+        if((abs(data[i][j]-data[i - 2][j + 1]) <= 10) && (v[i - 2][j + 1] == 0)){
             dfs2(i - 2, j + 1, w, h, data, v, m);
         }
     }
     if((i + 2 >= 1) && (i + 2 <= h-1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
-        if((abs(data[i][j]-data[i + 2][j + 1]) <= 60) && (v[i + 2][j + 1] == 0)){
+        if((abs(data[i][j]-data[i + 2][j + 1]) <= 10) && (v[i + 2][j + 1] == 0)){
             dfs2(i + 2, j + 1, w, h, data, v, m);
         }
     }
@@ -150,7 +150,7 @@ int main(void) {
         img[i] = 3 * c - 35;
         img[i+1] = 4 * c + 60;
         img[i+2] = 5 * c + 13;
-   //     img[i+3] = 255;
+        img[i+3] = 255;
         k++;
     }
 /*    char* hamster_colour = "hamster_colour.";
