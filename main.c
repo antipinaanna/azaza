@@ -134,15 +134,19 @@ int main(void) {
        for (j = 1;j < width; j++){
             if(colour[i][j] == 0){
                 m += 1;
-                dfs(i, j, width, height, graph, colour, m);
+                dfs2(i, j, width, height, graph, colour, m);
             }
         }
     } 
-    
+       
+    for (i = 0; i < height; i++)
+          for (j = 0; j < width; j++){
+            gray_img[i * width + j] = colour[i][j];
+          }
     int c;
     k = 0;
     for (i = 0; i < height * width * 3; i += 3){
-        c = colour[k] % 74 + vert[k] % 13;
+        c = gray_img[k] % 74 + gray_img[k] % 13;
         img[i] = 3 * c - 35;
         img[i+1] = 4 * c + 60;
         img[i+2] = 5 * c + 13;
@@ -212,7 +216,7 @@ int main(void) {
           for (j = 0; j < width; j++){
             gray_img[i * width + j] = graph[i][j];
           }
- */   
+*/                              
   stbi_write_jpg("hamster_gray2.jpg", width, height, 1, img, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
