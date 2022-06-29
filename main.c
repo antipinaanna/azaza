@@ -133,7 +133,7 @@ int main(void) {
    for (i = 1;i < height; i++){
        for (j = 1;j < width; j++){
             if(colour[i][j] == 0){
-                m += 1;
+                m += 11;
                 dfs2(i, j, width, height, graph, colour, m);
             }
         }
