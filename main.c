@@ -69,7 +69,7 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
     }
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
-    printf ("HELLO\n");
+    printf ("%d\n", m);
     v[i][j] = m;
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
         if((abs(data[i][j]-data[i - 1][j - 1]) <= 60) && (v[i - 1][j - 1] == 0)){
