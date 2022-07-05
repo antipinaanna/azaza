@@ -118,8 +118,8 @@ int main(void) {
     int black = 100;
     int white = 150;
     
-    int **colour = (int*)calloc(height, sizeof(int));
-    for (i = 0; i < height; i++) colour[i] = (int*)malloc(width * sizeof (int));
+    int **colour = (int**)malloc(height * sizeof(int*));
+    for (i = 0; i < height; i++) colour[i] = (int*)calloc(width, sizeof (int));
     unsigned char **graph = (unsigned char **)malloc(height * sizeof(unsigned char*));
     for (i = 0; i < height; i++) graph[i] = (unsigned char*)malloc(width * sizeof (unsigned char));
     unsigned char **graph1 = (unsigned char **)malloc((height + 2) * sizeof(unsigned char*));
