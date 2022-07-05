@@ -69,27 +69,27 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
     }
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int f){
-//    printf ("%d %d\n", m, f);
+    printf ("%d %d\n", m, f);
 //    if (data[i][j] != 0 && data[i][j] != 255) printf("%d %d %d\n", data[i][j], i, j);
     
     v[i][j] = m;
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
-        if((abs(data[i][j]-data[i - 1][j - 1]) <= 2) && (v[i - 1][j - 1] == 0)){
+        if((abs(data[i][j]-data[i - 1][j - 1]) <= 100) && (v[i - 1][j - 1] == 0)){
             dfs2(i - 1, j - 1, w, h, data, v, m, f + 1);
         }
     }
     if((i + 1 > 0) && (i + 1 < h) && (j > 0) && (j < w)){
-        if((abs(data[i][j]-data[i + 1][j]) <= 2) && (v[i + 1][j] == 0)){
+        if((abs(data[i][j]-data[i + 1][j]) <= 100) && (v[i + 1][j] == 0)){
             dfs2(i + 1, j, w, h, data, v, m, f + 1);
         }
     }
     if((i - 1 > 0) && (i - 1 < h) && (j + 1 > 0) && (j + 1 < w)){
-        if((abs(data[i][j]-data[i - 1][j + 1]) <= 2) && (v[i - 1][j + 1] == 0)){
+        if((abs(data[i][j]-data[i - 1][j + 1]) <= 100) && (v[i - 1][j + 1] == 0)){
             dfs2(i - 1, j + 1, w, h, data, v, m, f + 1);
         }
     }
     if((i > 0) && (i < h) && (j + 1> 0) && (j + 1 < w)){
-        if((abs(data[i][j]-data[i][j + 1]) <= 2) && (v[i][j + 1] == 0)){
+        if((abs(data[i][j]-data[i][j + 1]) <= 100) && (v[i][j + 1] == 0)){
             dfs2(i, j + 1, w, h, data, v, m, f + 1);
         }
     }
@@ -141,15 +141,12 @@ int main(void) {
     
     int r = 0;
    for (i = 1; i < height; i++){
-        printf ("HEYY\n");
        for (j = 1; j < width; j++){
             if(colour[i][j] == 0){
-               
                 m += 1;
                 dfs2(i, j, width, height, graph, colour, m, r);
             }
         }
-       printf ("WOW\n");
     } 
        
     printf ("WOW\n");   
