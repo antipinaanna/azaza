@@ -149,6 +149,7 @@ int main(void) {
                 dfs2(i, j, width, height, graph, colour, m, r);
             }
         }
+       printf ("WOW\n");
     } 
        
     printf ("WOW\n");   
