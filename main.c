@@ -73,6 +73,11 @@ void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int
 //    if (data[i][j] != 0 && data[i][j] != 255) printf("%d %d %d\n", data[i][j], i, j);
     
     v[i][j] = m;
+        if((i > 0) && (i < h) && (j + 1> 0) && (j + 1 < w)){
+        if((abs(data[i][j]-data[i][j + 1]) <= 100) && (v[i][j + 1] == 0)){
+            dfs2(i, j + 1, w, h, data, v, m, f + 1);
+        }
+    }
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
         if((abs(data[i][j]-data[i - 1][j - 1]) <= 100) && (v[i - 1][j - 1] == 0)){
             dfs2(i - 1, j - 1, w, h, data, v, m, f + 1);
@@ -88,11 +93,7 @@ void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int
             dfs2(i - 1, j + 1, w, h, data, v, m, f + 1);
         }
     }
-    if((i > 0) && (i < h) && (j + 1> 0) && (j + 1 < w)){
-        if((abs(data[i][j]-data[i][j + 1]) <= 100) && (v[i][j + 1] == 0)){
-            dfs2(i, j + 1, w, h, data, v, m, f + 1);
-        }
-    }
+
 //    printf ("HAHAHA\n");
   return;
 }
