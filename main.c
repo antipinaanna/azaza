@@ -21,7 +21,7 @@ void high_contrast (unsigned char** graph, int w, int h, int black, int white) {
 
 void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
-    printf ("6\n");
+//    printf ("6\n");
     for (i = 1; i < h + 1; i++){
         for (j = 1; j < w + 1; j++){
             graph[i - 1][j - 1] = (unsigned char)((graph1[i - 1][j - 1] + graph1[i - 1][j + 1] + graph1[i + 1][j - 1] + graph1[i + 1][j + 1])* 0.0924 + (graph1[i - 1][j] + graph1[i][j - 1] + graph1[i][j + 1] + graph1[i + 1][j])* 0.1192 + graph1[i][j] * 0.1538);
@@ -33,13 +33,13 @@ void svertka_Gauss (int w, int h, unsigned char **graph, unsigned char **graph1)
 
 void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
     int i, j;
-    printf ("467\n");
+//    printf ("467\n");
     for (i = 1; i < h + 1; i++){
         for (j = 1; j < w + 1; j++){
             graph1[i][j] = graph[i - 1][j - 1];
         }    
     }
-    printf ("4\n");
+//    printf ("4\n");
     for (i = 1; i < h + 1; i++){
         graph1[i][0] = graph[i - 1][0];
         graph1[i][w + 1] = graph[i - 1][w - 1];
@@ -48,7 +48,7 @@ void Gauss_blur(int w, int h, unsigned char **graph, unsigned char **graph1){
         graph1[0][j] = graph1[1][j];
         graph1[h + 1][j] = graph1[h][j];
     }
-    printf ("5\n");
+//    printf ("5\n");
     svertka_Gauss (w, h, graph, graph1);
     return;  
 }
@@ -69,6 +69,7 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
     }
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
+    printf ("HELLO\n");
     v[i][j] = m;
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
         if((abs(data[i][j]-data[i - 1][j - 1]) <= 60) && (v[i - 1][j - 1] == 0)){
@@ -126,8 +127,8 @@ int main(void) {
     for (i = 0; i < height + 2; i++) graph1[i] = (unsigned char*)malloc((width + 2) * sizeof (unsigned char));
     
 
-    for (i = 0; i < height; i++)
-      for (j = 0; j < width; j++){
+    for (i = 0; i < height - 1; i++)
+      for (j = 0; j < width - 1; j++){
         graph[i][j] = gray_img[i * width + j];
       }
 
@@ -135,10 +136,11 @@ int main(void) {
     
    Gauss_blur(width, height, graph, graph1);
     
-    
+    printf ("WOW\n");
    for (i = 1; i < height; i++){
        for (j = 1; j < width; j++){
             if(colour[i][j] == 0){
+                printf ("HEYY\n");
                 m += 1;
                 dfs2(i, j, width, height, graph, colour, m);
             }
