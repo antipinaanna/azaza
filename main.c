@@ -70,7 +70,7 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int f){
     printf ("%d %d\n", m, f);
-    printf("%d %d %d\n", data[i][j], i, j);
+    if (data[i][j] != 0 && data[i][j] != 255) printf("%d %d %d\n", data[i][j], i, j);
     
     v[i][j] = m;
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
@@ -138,6 +138,7 @@ int main(void) {
    high_contrast (graph, width, height, black, white);
     
    Gauss_blur(width, height, graph, graph1);
+    
     int r = 0;
     printf ("WOW\n");
    for (i = 1; i < height; i++){
