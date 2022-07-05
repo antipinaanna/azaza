@@ -70,21 +70,27 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
     v[i][j] = m;
-    if((i >= 1) && (i <= h-1) && (j - 2 >= 1) && (j - 2 <= w - 1)){
-        if((abs(data[i][j]-data[i][j - 2]) <= 60) && (v[i][j - 2] == 0)){
-            dfs2(i, j - 2, w, h, data, v, m);
+    if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
+        if((abs(data[i][j]-data[i - 1][j - 1]) <= 60) && (v[i - 1][j - 1] == 0)){
+            dfs2(i - 1, j - 1, w, h, data, v, m);
         }
     }
-    if((i - 2 >= 1) && (i - 2 <= h - 1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
-        if((abs(data[i][j]-data[i - 2][j + 1]) <= 60) && (v[i - 2][j + 1] == 0)){
-            dfs2(i - 2, j + 1, w, h, data, v, m);
+    if((i + 1 > 0) && (i + 1 < h) && (j > 0) && (j < w)){
+        if((abs(data[i][j]-data[i + 1][j]) <= 60) && (v[i + 1][j] == 0)){
+            dfs2(i + 1, j, w, h, data, v, m);
         }
     }
-    if((i + 2 >= 1) && (i + 2 <= h-1) && (j + 1 >= 1) && (j + 1 <= w - 1)){
-        if((abs(data[i][j]-data[i + 2][j + 1]) <= 60) && (v[i + 2][j + 1] == 0)){
-            dfs2(i + 2, j + 1, w, h, data, v, m);
+    if((i - 1 > 0) && (i - 1 < h) && (j + 1 > 0) && (j + 1 < w)){
+        if((abs(data[i][j]-data[i - 1][j + 1]) <= 60) && (v[i - 1][j + 1] == 0)){
+            dfs2(i - 1, j + 1, w, h, data, v, m);
         }
     }
+    if((i > 0) && (i < h) && (j + 1> 0) && (j + 1 < w)){
+        if((abs(data[i][j]-data[i][j + 1]) <= 60) && (v[i][j + 1] == 0)){
+            dfs2(i, j + 1, w, h, data, v, m);
+        }
+    }
+  
 }
 
 
@@ -130,10 +136,10 @@ int main(void) {
    Gauss_blur(width, height, graph, graph1);
     
     
-   for (i = 1;i < height; i++){
-       for (j = 1;j < width; j++){
+   for (i = 1; i < height; i++){
+       for (j = 1; j < width; j++){
             if(colour[i][j] == 0){
-                m += 11;
+                m += 1;
                 dfs2(i, j, width, height, graph, colour, m);
             }
         }
