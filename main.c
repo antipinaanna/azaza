@@ -69,7 +69,7 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
     }
 
 void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int f){
-    printf ("%d %d\n", m, f);
+//    printf ("%d %d\n", m, f);
     if (data[i][j] != 0 && data[i][j] != 255) printf("%d %d %d\n", data[i][j], i, j);
     
     v[i][j] = m;
@@ -93,7 +93,7 @@ void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int
             dfs2(i, j + 1, w, h, data, v, m, f + 1);
         }
     }
-    printf ("HAHAHA\n");
+//    printf ("HAHAHA\n");
   return;
 }
 
