@@ -68,28 +68,29 @@ void dfs(int *colour, int i, int n, unsigned char** graph)
         return;
     }
 
-void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m){
-    printf ("%d\n", m);
+void dfs2 (int i, int j, int w, int h, unsigned char** data, int** v, int m, int f){
+    printf ("%d %d\n", m, f);
     printf("%d %d %d\n", data[i][j], i, j);
+    
     v[i][j] = m;
     if((i - 1 > 0) && (i - 1 < h) && (j - 1 > 0) && (j - 1 < w)){
         if((abs(data[i][j]-data[i - 1][j - 1]) <= 20) && (v[i - 1][j - 1] == 0)){
-            dfs2(i - 1, j - 1, w, h, data, v, m);
+            dfs2(i - 1, j - 1, w, h, data, v, m, f + 1);
         }
     }
     if((i + 1 > 0) && (i + 1 < h) && (j > 0) && (j < w)){
         if((abs(data[i][j]-data[i + 1][j]) <= 20) && (v[i + 1][j] == 0)){
-            dfs2(i + 1, j, w, h, data, v, m);
+            dfs2(i + 1, j, w, h, data, v, m, f + 1);
         }
     }
     if((i - 1 > 0) && (i - 1 < h) && (j + 1 > 0) && (j + 1 < w)){
         if((abs(data[i][j]-data[i - 1][j + 1]) <= 20) && (v[i - 1][j + 1] == 0)){
-            dfs2(i - 1, j + 1, w, h, data, v, m);
+            dfs2(i - 1, j + 1, w, h, data, v, m, f + 1);
         }
     }
     if((i > 0) && (i < h) && (j + 1> 0) && (j + 1 < w)){
         if((abs(data[i][j]-data[i][j + 1]) <= 20) && (v[i][j + 1] == 0)){
-            dfs2(i, j + 1, w, h, data, v, m);
+            dfs2(i, j + 1, w, h, data, v, m, f + 1);
         }
     }
     printf ("HAHAHA\n");
@@ -137,14 +138,14 @@ int main(void) {
    high_contrast (graph, width, height, black, white);
     
    Gauss_blur(width, height, graph, graph1);
-    
+    int r = 0;
     printf ("WOW\n");
    for (i = 1; i < height; i++){
        for (j = 1; j < width; j++){
             if(colour[i][j] == 0){
                 printf ("HEYY\n");
                 m += 1;
-                dfs2(i, j, width, height, graph, colour, m);
+                dfs2(i, j, width, height, graph, colour, m, r);
             }
         }
     } 
@@ -168,8 +169,7 @@ int main(void) {
     stbi_write_png(outputPath, iw, ih, n, odata, 0);
     free(data);
     stbi_image_free(input_image); 
-*/    
-    
+*/    +
 /*    printf ("7\n");
     int n = height * width;
     unsigned char res[n][n]; 
