@@ -140,7 +140,7 @@ int main(void) {
     
    Gauss_blur(width, height, graph, graph1);
     
-    int r = 0;
+ /*   int r = 0;
    for (i = 1; i < height; i++){
        for (j = 1; j < width; j++){
             if(colour[i][j] == 0){
@@ -165,11 +165,12 @@ int main(void) {
         img[i+3] = 255;
         k++;
     }
+    */
 /*    char* hamster_colour = "hamster_colour.";
     stbi_write_png(outputPath, iw, ih, n, odata, 0);
     free(data);
     stbi_image_free(input_image); 
-*/    +
+*/    
 /*    printf ("7\n");
     int n = height * width;
     unsigned char res[n][n]; 
@@ -228,7 +229,7 @@ int main(void) {
             gray_img[i * width + j] = graph[i][j];
           }
 */                              
-  stbi_write_jpg("hamster_gray2.jpg", width, height, 1, img, 100);
+  stbi_write_jpg("hamster_gray2.jpg", width, height, 1, graph, 100);
   
   printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
  
