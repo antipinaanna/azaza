@@ -366,3 +366,82 @@ gcc main.c -lm -o main
 git pull
 gcc main.c -lm -o main
 ./main
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
+git pull
+gcc main.c -lm -o main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+history
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+gcc main.c -lm -o main
+./main
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
+git pull
+gcc main.c -lm -o main
+./main
