@@ -445,3 +445,9 @@ gcc main.c -lm -o main
 git pull
 gcc main.c -lm -o main
 ./main
+git pull
+gcc main.c -lm -o main
+./main
+git add .
+git commit
+git push
